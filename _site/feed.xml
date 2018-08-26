@@ -5,12 +5,12 @@
         <atom:link href="/Type-on-Strap/feed.xml" rel="self" type="application/rss+xml"/>
         <link>http://localhost:4000/Type-on-Strap/</link>
         <description></description>
-        <pubDate>Mon, 27 Aug 2018 00:08:16 +0800</pubDate>
+        <pubDate>Mon, 27 Aug 2018 00:32:17 +0800</pubDate>
         
         <item>
-            <title>System Architecture Principles</title>
-            <link>/Type-on-Strap/2018/08/26/System-architecture-principles.html</link>
-            <guid isPermaLink="true">/Type-on-Strap/2018/08/26/System-architecture-principles.html</guid>
+            <title>系统架构原则</title>
+            <link>/Type-on-Strap/2018/08/26/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%8E%9F%E5%88%99.html</link>
+            <guid isPermaLink="true">/Type-on-Strap/2018/08/26/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%8E%9F%E5%88%99.html</guid>
             <description>&lt;h1 id=&quot;系统架构原则&quot;&gt;系统架构原则&lt;/h1&gt;
 
 &lt;h3 id=&quot;涌现原则&quot;&gt;涌现原则&lt;/h3&gt;
@@ -67,6 +67,55 @@
 
 &lt;h3 id=&quot;开端原则&quot;&gt;开端原则&lt;/h3&gt;
 
+&lt;p&gt;在产品定义的早期阶段列出的（企业内部和企业外部的）利益相关者会对架构产生极其重大的影响。&lt;/p&gt;
+
+&lt;h3 id=&quot;平衡原则&quot;&gt;平衡原则&lt;/h3&gt;
+
+&lt;p&gt;有很多因素会影响并作用于系统的构想、设计、实现及操作。架构师必须在这些因素中寻求一个平衡点，使大多数重要的利益相关者得到满足。&lt;/p&gt;
+
+&lt;h3 id=&quot;系统问题陈述原则&quot;&gt;系统问题陈述原则&lt;/h3&gt;
+
+&lt;p&gt;对问题所做的陈述会确定系统的高层目标，并划定系统的边界。就问题陈述的正确性进行反复的辩论和完善，直到你认为满意为止。&lt;/p&gt;
+
+&lt;h3 id=&quot;歧义与目标原则&quot;&gt;歧义与目标原则&lt;/h3&gt;
+
+&lt;p&gt;架构师必须解决这些歧义，以便提出几条有代表性的目标并持续的更新它们。这些目标要完备且一致，要兼具挑战性与可搭乘性，同时又要为人类所解决问题。&lt;/p&gt;
+
+&lt;h3 id=&quot;创新原则&quot;&gt;创新原则&lt;/h3&gt;
+
+&lt;p&gt;在架构中进行创新，就是要追求一种能够解决矛盾的好架构。&lt;/p&gt;
+
+&lt;h3 id=&quot;表面复杂原则&quot;&gt;表面复杂原则&lt;/h3&gt;
+
+&lt;p&gt;我们要对系统进行分解、抽象及分层，将其表面复杂度控制在人类所能理解的范围之内。&lt;/p&gt;
+
+&lt;h3 id=&quot;必备复杂度原则&quot;&gt;必备复杂度原则&lt;/h3&gt;
+
+&lt;p&gt;系统的必备复杂度取决于它的功能。把系统必须实现的功能仔细描述出来，绕后选择一个复杂度最低的概念。&lt;/p&gt;
+
+&lt;h3 id=&quot;第二定律原则&quot;&gt;第二定律原则&lt;/h3&gt;
+
+&lt;p&gt;系统的实际复杂度总会超过必备复杂度。架构师要令实际复杂度尽量接近必备复杂度。&lt;/p&gt;
+
+&lt;h3 id=&quot;分解原则&quot;&gt;分解原则&lt;/h3&gt;
+
+&lt;p&gt;分解是架构师主动做出的选择。分解会影响性能的衡量标准，会影响组织的运作方式及供应商的价值捕获能力。&lt;/p&gt;
+
+&lt;p&gt;###”2下1上”原则&lt;/p&gt;
+
+&lt;p&gt;要想判断出Level 1所做的分解是否合适，必须再向下分解一层，以确定Level 2中的各种关系。&lt;/p&gt;
+
+&lt;h3 id=&quot;优雅原则&quot;&gt;优雅原则&lt;/h3&gt;
+
+&lt;p&gt;对于身处其中的架构师来说，如果系统的必备复杂度较低，而且其分解方式能够同时与多个分解平面相匹配，那么该系统就是优雅的。&lt;/p&gt;
+
+&lt;h3 id=&quot;架构健壮程度原则&quot;&gt;架构健壮程度原则&lt;/h3&gt;
+
+&lt;p&gt;好的架构要能够应对各种各样的变化。能够应对变化的那种架构，要么是比较健壮的架构，要么是适应能力比较强的架构。前者能够处理环境中的变化，而后者则能够适应环境中的变化。&lt;/p&gt;
+
+&lt;h3 id=&quot;架构决策的耦合与整理原则&quot;&gt;架构决策的耦合与整理原则&lt;/h3&gt;
+
+&lt;p&gt;可以按照指标对决策的敏感度以及决策之间的连接度来排定架构决策之间的先后顺序。&lt;/p&gt;
 </description>
             <pubDate>Sun, 26 Aug 2018 00:00:00 +0800</pubDate>
         </item>
