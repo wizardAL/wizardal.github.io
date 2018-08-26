@@ -5,13 +5,17 @@
         <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
         <link>http://localhost:4000//</link>
         <description></description>
-        <pubDate>Mon, 27 Aug 2018 00:49:30 +0800</pubDate>
+        <pubDate>Mon, 27 Aug 2018 00:53:06 +0800</pubDate>
         
         <item>
             <title>系统架构原则</title>
             <link>/2018/08/26/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%8E%9F%E5%88%99.html</link>
             <guid isPermaLink="true">/2018/08/26/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%8E%9F%E5%88%99.html</guid>
-            <description>&lt;h3 id=&quot;涌现原则&quot;&gt;涌现原则&lt;/h3&gt;
+            <description>&lt;blockquote&gt;
+  &lt;p&gt;摘自《System Architecture:Strategy and Product Development for Complex Systems》&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;涌现原则&quot;&gt;涌现原则&lt;/h3&gt;
 
 &lt;p&gt;当各实体拼合成一个系统时，实体之间的交互会把功能、行为、性能和其他内在属性涌现出来。&lt;/p&gt;
 
