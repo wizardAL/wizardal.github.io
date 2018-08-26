@@ -5,15 +5,13 @@
         <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
         <link>http://localhost:4000//</link>
         <description></description>
-        <pubDate>Mon, 27 Aug 2018 00:35:49 +0800</pubDate>
+        <pubDate>Mon, 27 Aug 2018 00:39:39 +0800</pubDate>
         
         <item>
             <title>系统架构原则</title>
             <link>/2018/08/26/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%8E%9F%E5%88%99.html</link>
             <guid isPermaLink="true">/2018/08/26/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%8E%9F%E5%88%99.html</guid>
-            <description>&lt;h1 id=&quot;系统架构原则&quot;&gt;系统架构原则&lt;/h1&gt;
-
-&lt;h3 id=&quot;涌现原则&quot;&gt;涌现原则&lt;/h3&gt;
+            <description>&lt;h3 id=&quot;涌现原则&quot;&gt;涌现原则&lt;/h3&gt;
 
 &lt;p&gt;当各实体拼合成一个系统时，实体之间的交互会把功能、行为、性能和其他内在属性涌现出来。&lt;/p&gt;
 
@@ -37,7 +35,7 @@
 
 &lt;p&gt;价值是有着一定成本的利益。架构是由形式所承载的功能。由于利益要通过功能而体现，同时形式又与成本相关，因此，这两个论述之间形成一种特别紧密的联系。&lt;/p&gt;
 
-&lt;p&gt;###与特定解决方案无关的功能原则&lt;/p&gt;
+&lt;h3 id=&quot;与特定解决方案无关的功能原则&quot;&gt;与特定解决方案无关的功能原则&lt;/h3&gt;
 
 &lt;p&gt;糟糕的系统规范书总是把人引向预先定好的某一套具体解决方案、功能或形式中，这可能会令系统架构师的视野变窄，从而不去探索更多的潜在选项。&lt;/p&gt;
 
@@ -101,7 +99,7 @@
 
 &lt;p&gt;分解是架构师主动做出的选择。分解会影响性能的衡量标准，会影响组织的运作方式及供应商的价值捕获能力。&lt;/p&gt;
 
-&lt;p&gt;###”2下1上”原则&lt;/p&gt;
+&lt;h3 id=&quot;2下1上原则&quot;&gt;“2下1上”原则&lt;/h3&gt;
 
 &lt;p&gt;要想判断出Level 1所做的分解是否合适，必须再向下分解一层，以确定Level 2中的各种关系。&lt;/p&gt;
 
