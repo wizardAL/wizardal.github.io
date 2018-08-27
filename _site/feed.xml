@@ -3,25 +3,23 @@
     <channel>
         <title>wizardA.L</title>
         <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-        <link>http://localhost:4000//</link>
+        <link>http://localhost:4000/</link>
         <description></description>
-        <pubDate>Mon, 27 Aug 2018 17:43:42 +0800</pubDate>
+        <pubDate>Mon, 27 Aug 2018 17:55:11 +0800</pubDate>
         
         <item>
             <title>系统架构原则</title>
             <link>/2018/08/26/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%8E%9F%E5%88%99.html</link>
             <guid isPermaLink="true">/2018/08/26/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%8E%9F%E5%88%99.html</guid>
-            <description>&lt;blockquote&gt;
-  &lt;p&gt;摘自《System Architecture:Strategy and Product Development for Complex Systems》&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;涌现原则&quot;&gt;涌现原则&lt;/h3&gt;
+            <description>&lt;h3 id=&quot;涌现原则&quot;&gt;涌现原则&lt;/h3&gt;
 
 &lt;p&gt;当各实体拼合成一个系统时，实体之间的交互会把功能、行为、性能和其他内在属性涌现出来。&lt;/p&gt;
 
 &lt;h3 id=&quot;整体原则&quot;&gt;整体原则&lt;/h3&gt;
 
 &lt;p&gt;每个系统都作为某一个或某些个大系统的一小部分而运作，同时，每个系统中也都包含着更小的一些系统。&lt;/p&gt;
+
+&lt;!--more--&gt;
 
 &lt;h3 id=&quot;聚焦原则&quot;&gt;聚焦原则&lt;/h3&gt;
 
@@ -119,6 +117,9 @@
 
 &lt;p&gt;可以按照指标对决策的敏感度以及决策之间的连接度来排定架构决策之间的先后顺序。&lt;/p&gt;
 
+&lt;blockquote&gt;
+  &lt;p&gt;摘自《System Architecture:Strategy and Product Development for Complex Systems》&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
             <pubDate>Sun, 26 Aug 2018 00:00:00 +0800</pubDate>
         </item>
@@ -194,7 +195,7 @@ Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit 
 
 &lt;p&gt;Here’s an example of an image, which is included using Markdown:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;//assets/img/pexels/book-glass.jpeg&quot; alt=&quot;Image of a glass on a book&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/img/pexels/book-glass.jpeg&quot; alt=&quot;Image of a glass on a book&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Highlighting for code in Jekyll is done using Base16 or Rouge. This theme makes use of Rouge by default.&lt;/p&gt;
 
@@ -362,7 +363,7 @@ Syntax highlighting is a feature that displays source code, in different colors 
 
 &lt;p&gt;If you want to customize the theme it is up to you, you can add the &lt;code class=&quot;highlighter-rouge&quot;&gt;toc.js&lt;/code&gt; file into the &lt;code class=&quot;highlighter-rouge&quot;&gt;asset &amp;gt; js&lt;/code&gt; and add it into the &lt;code class=&quot;highlighter-rouge&quot;&gt;page.html&lt;/code&gt; layout with:&lt;/p&gt;
 
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;//assets/js/toc.js&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/assets/js/toc.js&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;Then you can use it as it is said on the repository.&lt;/p&gt;
 
