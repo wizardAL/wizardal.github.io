@@ -5,7 +5,7 @@
         <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
         <link>http://localhost:4000//</link>
         <description></description>
-        <pubDate>Mon, 27 Aug 2018 00:56:08 +0800</pubDate>
+        <pubDate>Mon, 27 Aug 2018 17:38:49 +0800</pubDate>
         
         <item>
             <title>系统架构原则</title>
@@ -421,12 +421,12 @@ Some more text
         return '%' + c.charCodeAt(0).toString(16);
       });
     }
-
+    
     function createLink (header) {
       var innerText = (header.textContent === undefined) ? header.innerText : header.textContent;
       return &quot;&lt;a href='#&quot; + fixedEncodeURIComponent(header.id) + &quot;'&gt;&quot; + innerText + &quot;&lt;/a&gt;&quot;;
     }
-
+    
     var headers = $(settings.headers).filter(function() {
       // get all headers with an ID
       var previousSiblingName = $(this).prev().attr( &quot;name&quot; );
@@ -439,22 +439,22 @@ Some more text
       $(this).hide();
       return;
     }
-
+    
     if (0 === settings.showSpeed) {
       settings.showEffect = 'none';
     }
-
+    
     var render = {
       show: function() { output.hide().html(html).show(settings.showSpeed); },
       slideDown: function() { output.hide().html(html).slideDown(settings.showSpeed); },
       fadeIn: function() { output.hide().html(html).fadeIn(settings.showSpeed); },
       none: function() { output.html(html); }
     };
-
+    
     var get_level = function(ele) { return parseInt(ele.nodeName.replace(&quot;H&quot;, &quot;&quot;), 10); };
     var highest_level = headers.map(function(_, ele) { return get_level(ele); }).get().sort()[0];
     var return_to_top = '&lt;i class=&quot;icon-arrow-up back-to-top&quot;&gt; &lt;/i&gt;';
-
+    
     var level = get_level(headers[0]),
       this_level,
       html = settings.title + &quot; &lt;&quot; +settings.listType + &quot; class=\&quot;&quot; + settings.classes.list +&quot;\&quot;&gt;&quot;;
@@ -493,7 +493,7 @@ Some more text
         window.location.hash = '';
       });
     }
-
+    
     render[settings.showEffect]();
   };
 })(jQuery);
