@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="整理的全链路压测备战checklist
+事前
+风险管理
+流量评估
+容量评估
+容量模型
+峰值指标评估
+架构梳理
+强弱依赖
+业务链路梳理
+作战手册
+配置管理
+磁盘清理
+云上建站
+容器发布
+应用发布
+配置发布
+日志管理
+重启
+扩容
+缓存预热
+定时任务
+模拟数据构造
+监控配置
+
+事中
+单链路压测
+单机性能测">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe">
+    
+
+    <!-- Title -->
+    
+    <title>全链路压测 | Hexo</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- Custom Fonts -->
+    <link href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Noto+Serif:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- jQuery -->
+    <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+
+    <!-- Content -->
+    <section class="article-container">
+    <!-- Back Home -->
+    <a class="nav-back" href="/">
+    <i class="fa fa-puzzle-piece"></i>
+</a>
+
+        <!-- Page Header -->
+        <header class="intro-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <div class="post-heading">
+                            <h1>
+                                全链路压测
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Post Content -->
+        <article>
+            <div class="container">
+                <div class="row">
+                    <!-- Post Main Content -->
+                    <div class="post-content col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <p>整理的全链路压测备战checklist</p>
+<h2 id="事前"><a href="#事前" class="headerlink" title="事前"></a>事前</h2><ul>
+<li>风险管理</li>
+<li>流量评估</li>
+<li>容量评估</li>
+<li>容量模型</li>
+<li>峰值指标评估</li>
+<li>架构梳理</li>
+<li>强弱依赖</li>
+<li>业务链路梳理</li>
+<li>作战手册</li>
+<li>配置管理</li>
+<li>磁盘清理</li>
+<li>云上建站</li>
+<li>容器发布</li>
+<li>应用发布</li>
+<li>配置发布</li>
+<li>日志管理</li>
+<li>重启</li>
+<li>扩容</li>
+<li>缓存预热</li>
+<li>定时任务</li>
+<li>模拟数据构造</li>
+<li>监控配置</li>
+</ul>
+<h2 id="事中"><a href="#事中" class="headerlink" title="事中"></a>事中</h2><ul>
+<li>单链路压测</li>
+<li>单机性能测试</li>
+<li>限流测试与验证</li>
+<li>资源调度</li>
+<li>流量调度</li>
+<li>预案测试与演练</li>
+<li>故障机器处理</li>
+<li>资源稳定性</li>
+<li>容错与容灾</li>
+<li>安全与防刷</li>
+</ul>
+<h2 id="事后"><a href="#事后" class="headerlink" title="事后"></a>事后</h2><ul>
+<li>缩容</li>
+<li>机器回收</li>
+</ul>
+<ul>
+<li>信息维护</li>
+</ul>
+
+
+                            <!-- Meta -->
+                            <div class="post-meta">
+                                <hr>
+                                <br>
+                                <div class="post-tags">
+                                    
+                                        
+
+<a href="/tags/架构/">#架构</a>
+
+
+                                            
+                                </div>
+                                <div class="post-date">
+                                    2018 年 08 月 31 日
+                                </div>
+                            </div>
+                    </div>
+
+                    <!-- Comments -->
+                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <!-- Disqus Comments -->
+
+
+                    </div>
+                </div>
+            </div>
+        </article>
+</section>
+
+<!-- Image viewer-->
+
+    <!-- Custom picture view-->
+    <link href="/css/viewer.min.css" rel="stylesheet" />
+    <script
+      src="/js/viewer.min.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    
+    <script type="text/javascript">
+      // set image viewer
+      Viewer.setDefaults({
+        zoomRatio: [0.5],
+        navbar: false,
+        toolbar: false,
+        button: false,
+        title: [2, (image, imageData) => `${image.alt}`],
+        show: function() {
+          this.viewer.zoomTo(0.5);
+        }
+      });
+      var imageList = document.getElementsByTagName("img");
+      Array.prototype.forEach.call(imageList, element => {
+        var viewer = new Viewer(element);
+      });
+    </script>
+
+    
+    <!-- Scripts -->
+    <script type="text/javascript">
+    console.log("© zchen9 🙋 2015-" + new Date().getFullYear());
+</script>
+  
+    <!-- Google Analytics -->
+    
+
+    <!-- Service Worker -->
+    <!-- if using service worker -->
+
+    
+</body>
+
+</html>
