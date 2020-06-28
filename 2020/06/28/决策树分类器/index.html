@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="决策树分类器(Decision Tree Classifier)是一种简单的分类方法，它是对被观察数据进行分类的一种相当直观的方法。决策树在经过训练之后，看起来就像是以树状形式排列的一系列的if-then语句。">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="wizardA.L">
+    
+
+    <!-- Title -->
+    
+    <title>决策树分类器 | wizardA.L&#39;s Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- Custom Fonts -->
+    <link href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Noto+Serif:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- jQuery -->
+    <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+
+    <!-- Content -->
+    <section class="article-container">
+    <!-- Back Home -->
+    <a class="nav-back" href="/">
+    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+</a>
+
+
+        <!-- Page Header -->
+        <header class="intro-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <div class="post-heading">
+                            <h1>
+                                决策树分类器
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Post Content -->
+        <article>
+            <div class="container">
+                <div class="row">
+                    <!-- Post Main Content -->
+                    <div class="post-content col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <p>决策树分类器(Decision Tree Classifier)是一种简单的分类方法，它是对被观察数据进行分类的一种相当直观的方法。决策树在经过训练之后，看起来就像是以树状形式排列的一系列的if-then语句。</p>
+<a id="more"></a>
+
+<h3 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h3><p>决策树学习通常包括三个步骤:特征选择，决策树的生成和决策树的剪枝。</p>
+<ul>
+<li><p>特征选择</p>
+<p>特征选择在于选取对训练数据具有分类能力的特征，这样可以提高决策树学习的效率。</p>
+</li>
+<li><p>决策树的生成</p>
+<p>从根结点开始，对结点计算所有可能的特征的信息增益，选择信息增益最大的特征作为结点的特征，由该特征的不同取值建立子结点，再对子结点递归地调用以上方法，构建决策树；直到所有特征的信息增均很小或没有特征可以选择为止，最后得到一个决策树。</p>
+</li>
+<li><p>决策树的剪枝</p>
+<p>决策树生成算法递归地产生决策树，直到不能继续下去为止。这样产生的树往往对训练数据的分类很准确，但对未知的测试数据的分类却没有那么准确，即出现过拟合现象。解决这个问题的办法是考虑决策树的复杂度，对已生成的决策树进行简化，这个过程称为剪枝。</p>
+</li>
+</ul>
+<h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><p>有一组水果数据包括直径、颜色等信息，现在我们使用这些数据来构造决策树。</p>
+<table>
+<thead>
+<tr>
+<th>直径（英寸）</th>
+<th>颜色</th>
+<th>水果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>4</td>
+<td>红色</td>
+<td>苹果</td>
+</tr>
+<tr>
+<td>4</td>
+<td>绿色</td>
+<td>苹果</td>
+</tr>
+<tr>
+<td>1</td>
+<td>红色</td>
+<td>樱桃</td>
+</tr>
+<tr>
+<td>1</td>
+<td>绿色</td>
+<td>葡萄</td>
+</tr>
+<tr>
+<td>5</td>
+<td>红色</td>
+<td>苹果</td>
+</tr>
+</tbody></table>
+<p>为了创建树的根节点，有两个可能的变量可用于对数据进行拆分，它们分别是直径和颜色。第一个是对每个变量进行尝试，从中找出拆分数据效果最好的一个。按颜色拆分数据集得到如下结果：</p>
+<table>
+<thead>
+<tr>
+<th>红色</th>
+<th>绿色</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>苹果</td>
+<td>苹果</td>
+</tr>
+<tr>
+<td>樱桃</td>
+<td>葡萄</td>
+</tr>
+<tr>
+<td>苹果</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>接着我们按照直径进行（以4英寸）拆分，得到如下结果：</p>
+<table>
+<thead>
+<tr>
+<th>直径&lt;4英寸</th>
+<th>直径&gt;=4英寸</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>樱桃</td>
+<td>苹果</td>
+</tr>
+<tr>
+<td>葡萄</td>
+<td>苹果</td>
+</tr>
+</tbody></table>
+<p>显然按照英寸拆分的效果更清晰，并构建了如下决策树结构：</p>
+<p><img src="/2020/06/28/%E5%86%B3%E7%AD%96%E6%A0%91%E5%88%86%E7%B1%BB%E5%99%A8/tree.png" alt></p>
+<p>时常我们会遇到更复杂的情况，无法更快速的找到一个变量进行拆分。为了衡量一个拆分的优劣，由此引入了熵的概念，熵则代表一个集合中的无序程度，对应公式如下：</p>
+<blockquote>
+<p>p(i) = frequency(outcome) = count(outcome) / count(total rows)</p>
+<p>集合中熵偏小，就意味着集合中的大部分元素都是同质的；而熵等于0，则代表集合中的所有元素都是同一类型的</p>
+</blockquote>
+<h3 id="Python代码实现"><a href="#Python代码实现" class="headerlink" title="Python代码实现"></a>Python代码实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sklearn.tree <span class="keyword">as</span> tree</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">水果数据集</span></span><br><span class="line"><span class="string">包含特征：直径，颜色，水果类型</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">fruitSet = [[<span class="number">4</span>, <span class="string">'红色'</span>, <span class="string">'苹果'</span>],</span><br><span class="line">            [<span class="number">4</span>, <span class="string">'绿色'</span>, <span class="string">'苹果'</span>],</span><br><span class="line">            [<span class="number">1</span>, <span class="string">'红色'</span>, <span class="string">'樱桃'</span>],</span><br><span class="line">            [<span class="number">1</span>, <span class="string">'绿色'</span>, <span class="string">'葡萄'</span>],</span><br><span class="line">            [<span class="number">5</span>, <span class="string">'红色'</span>, <span class="string">'苹果'</span>]]</span><br><span class="line">dic = dict()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 向量化处理</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">feature</span><span class="params">(fruitSet)</span>:</span></span><br><span class="line">    x, y = list(), list()</span><br><span class="line">    <span class="keyword">for</span> datas <span class="keyword">in</span> fruitSet:</span><br><span class="line">        x_temp = list()</span><br><span class="line">        <span class="comment"># 提取x特征</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(datas) - <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> type(datas[i]).__name__ == <span class="string">'str'</span>:</span><br><span class="line">                <span class="keyword">if</span> datas[i] <span class="keyword">not</span> <span class="keyword">in</span> dic.get(i, list()):</span><br><span class="line">                    <span class="keyword">if</span> dic.get(i) <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                        dic[i] = list()</span><br><span class="line">                    dic[i].append(datas[i])</span><br><span class="line">                x_temp.append(dic[i].index(datas[i]))</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                x_temp.append(datas[i])</span><br><span class="line">        x.append(x_temp)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 提取y特征</span></span><br><span class="line">        <span class="keyword">if</span> type(datas[<span class="number">-1</span>]).__name__ == <span class="string">'str'</span>:</span><br><span class="line">            length = len(datas) - <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> datas[<span class="number">-1</span>] <span class="keyword">not</span> <span class="keyword">in</span> dic.get(length, list()):</span><br><span class="line">                <span class="keyword">if</span> dic.get(length) <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                    dic[length] = list()</span><br><span class="line">                dic.get(length, list()).append(datas[<span class="number">-1</span>])</span><br><span class="line">            y.append(dic[length].index(datas[<span class="number">-1</span>]))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            y.append(datas[<span class="number">-1</span>])</span><br><span class="line">    <span class="keyword">return</span> x, y</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"><span class="comment"># 获取对应分类</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_classifer</span><span class="params">(index)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> dic[len(fruitSet[<span class="number">0</span>]) - <span class="number">1</span>][int(index[<span class="number">0</span>])]</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment"># 创建决策树回归模型，最大深度为3</span></span><br><span class="line">    model = tree.DecisionTreeRegressor(max_depth=<span class="number">3</span>)</span><br><span class="line">    x, y = feature(fruitSet)</span><br><span class="line">    model.fit(x, y)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 测试模型</span></span><br><span class="line">    print(<span class="string">'分类：'</span>, get_classifer(model.predict([[<span class="number">2</span>, <span class="number">0</span>]])))</span><br><span class="line">    print(<span class="string">'分类：'</span>, get_classifer(model.predict([[<span class="number">5</span>, <span class="number">0</span>]])))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 输出决策树</span></span><br><span class="line">    print(tree.export_graphviz(model))</span><br></pre></td></tr></table></figure>
+
+<p>运行结果</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">分类： 樱桃</span><br><span class="line">分类： 苹果</span><br><span class="line">digraph Tree &#123;</span><br><span class="line">node [shape=box] ;</span><br><span class="line">0 [label="X[0] &lt;= 2.5\nmse = 0.64\nsamples = 5\nvalue = 0.6"] ;</span><br><span class="line">1 [label="X[1] &lt;= 0.5\nmse = 0.25\nsamples = 2\nvalue = 1.5"] ;</span><br><span class="line">0 -&gt; 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;</span><br><span class="line">2 [label="mse = 0.0\nsamples = 1\nvalue = 1.0"] ;</span><br><span class="line">1 -&gt; 2 ;</span><br><span class="line">3 [label="mse = 0.0\nsamples = 1\nvalue = 2.0"] ;</span><br><span class="line">1 -&gt; 3 ;</span><br><span class="line">4 [label="mse = 0.0\nsamples = 3\nvalue = 0.0"] ;</span><br><span class="line">0 -&gt; 4 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>决策树最显著的优点在于，利用它来结束一个受训模型是非常容易的，而且算法将最为重要的判断因素都很好地安排在了靠近树的根部位置。这意味着决策树不仅对分类很有价值，而且对决策过程的解释也很有帮助。</p>
+<p>与贝叶斯分类器相比，决策树的主要优点是它能够很容易的处理变量之间的相互影响</p>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>对于复杂场景，因为节点的数据可能非常庞大（每一个特征都有可能存在或缺失），这些树有可能变得异常庞大且复杂，这会导致分类效率很低。</p>
+
+
+                            <!-- Meta -->
+                            <div class="post-meta">
+                                <hr>
+                                <br>
+                                <div class="post-tags">
+                                    
+                                        
+
+<a href="/tags/算法/">#算法</a>
+
+
+                                            
+                                </div>
+                                <div class="post-date">
+                                    2020年06月28日
+                                </div>
+                            </div>
+                    </div>
+
+                    <!-- Comments -->
+                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <!-- Disqus Comments -->
+
+
+                    </div>
+                </div>
+            </div>
+        </article>
+</section>
+
+<!-- Image viewer-->
+
+    <!-- Custom picture view-->
+    <link href="/css/viewer.min.css" rel="stylesheet" />
+    <script
+      src="/js/viewer.min.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    
+    <script type="text/javascript">
+      // set image viewer
+      Viewer.setDefaults({
+        zoomRatio: [0.5],
+        navbar: false,
+        toolbar: false,
+        button: false,
+        title: [2, (image, imageData) => `${image.alt}`],
+        show: function() {
+          this.viewer.zoomTo(0.5);
+        }
+      });
+      var imageList = document.getElementsByTagName("img");
+      Array.prototype.forEach.call(imageList, element => {
+        var viewer = new Viewer(element);
+      });
+    </script>
+
+    
+    <!-- Scripts -->
+    <script type="text/javascript">
+    console.log("© zchen9 🙋 2015-" + new Date().getFullYear());
+</script>
+  
+    <!-- Google Analytics -->
+    
+
+    <!-- Service Worker -->
+    <!-- if using service worker -->
+
+    
+</body>
+
+</html>
