@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="有许多种神经网络，它们都以一组节点（神经元构成），并且彼此相连。下面主要介绍多层感知机MLP(multilayer perceptron)，它属于人工神经网络（ANN，Artificial Neural Network），除了输入输出层，它中间可以有多个隐藏层，如果没有隐藏层即可解决线性可划分的数据问题。">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="wizardA.L">
+    
+
+    <!-- Title -->
+    
+    <title>神经网络 | wizardA.L&#39;s Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- Custom Fonts -->
+    <link href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Noto+Serif:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- jQuery -->
+    <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+
+    <!-- Content -->
+    <section class="article-container">
+    <!-- Back Home -->
+    <a class="nav-back" href="/">
+    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+</a>
+
+
+        <!-- Page Header -->
+        <header class="intro-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <div class="post-heading">
+                            <h1>
+                                神经网络
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Post Content -->
+        <article>
+            <div class="container">
+                <div class="row">
+                    <!-- Post Main Content -->
+                    <div class="post-content col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <p>有许多种神经网络，它们都以一组节点（神经元构成），并且彼此相连。下面主要介绍多层感知机MLP(multilayer perceptron)，它属于人工神经网络（ANN，Artificial Neural Network），除了输入输出层，它中间可以有多个隐藏层，如果没有隐藏层即可解决线性可划分的数据问题。</p>
+<a id="more"></a>
+
+<p>最简单的MLP模型只包含一个隐藏层，即三层的结构如下图：</p>
+<p><img src="/2020/06/28/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C.png" alt></p>
+<p>从上图可以看到，多层感知机的层与层之间是<code>全连接</code>的。多层感知机最底层是输入层，中间是隐藏层，最后是输出层。</p>
+<blockquote>
+<p>全连接：上一层的任何一个神经元与下一层的所有神经元都有连接。</p>
+</blockquote>
+<p>上诉网络有两层神经元，层与层之间通过突触彼此相连，每个突触都有与之关联的权重。一组神经元的输出是通过突触传入下一层的，如果从一个神经元指向下一个神经元的突触权重越大，那么它对神经元输出的影响也就越大。</p>
+<h3 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h3><p>神经网络训练的过程可以分为三个步骤</p>
+<ul>
+<li><ol>
+<li>定义神经网络的结构和前向传播的输出结果</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>定义损失函数以及选择反向传播优化的算法</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>生成会话并在训练数据上反复运行反向传播优化算法</li>
+</ol>
+</li>
+</ul>
+<h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><p>仍然沿用贝叶斯分类器中西瓜分类的例子：</p>
+<table>
+<thead>
+<tr>
+<th align="center">序列</th>
+<th align="center">色泽</th>
+<th align="center">根蒂</th>
+<th align="center">敲声</th>
+<th align="center">纹理</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center">乌黑</td>
+<td align="center">蜷缩</td>
+<td align="center">浊响</td>
+<td align="center">清晰</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">青绿</td>
+<td align="center">稍蜷</td>
+<td align="center">沉闷</td>
+<td align="center">稍糊</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">浅白</td>
+<td align="center">硬挺</td>
+<td align="center">清脆</td>
+<td align="center">模糊</td>
+</tr>
+</tbody></table>
+<h3 id="Python代码实现"><a href="#Python代码实现" class="headerlink" title="Python代码实现"></a>Python代码实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.neural_network <span class="keyword">import</span> MLPClassifier</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">特征：'色泽', '根蒂', '敲声', '纹理'</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">watermelon = [[<span class="string">'青绿'</span>, <span class="string">'蜷缩'</span>, <span class="string">'浊响'</span>, <span class="string">'清晰'</span>, <span class="string">'是'</span>],</span><br><span class="line">            [<span class="string">'乌黑'</span>, <span class="string">'蜷缩'</span>, <span class="string">'沉闷'</span>, <span class="string">'清晰'</span>, <span class="string">'是'</span>],</span><br><span class="line">            [<span class="string">'乌黑'</span>, <span class="string">'蜷缩'</span>, <span class="string">'浊响'</span>, <span class="string">'清晰'</span>, <span class="string">'是'</span>],</span><br><span class="line">            [<span class="string">'青绿'</span>, <span class="string">'蜷缩'</span>, <span class="string">'沉闷'</span>, <span class="string">'清晰'</span>, <span class="string">'是'</span>],</span><br><span class="line">            [<span class="string">'浅白'</span>, <span class="string">'蜷缩'</span>, <span class="string">'浊响'</span>, <span class="string">'清晰'</span>, <span class="string">'是'</span>],</span><br><span class="line">            [<span class="string">'青绿'</span>, <span class="string">'稍蜷'</span>, <span class="string">'浊响'</span>, <span class="string">'清晰'</span>, <span class="string">'是'</span>],</span><br><span class="line">            [<span class="string">'乌黑'</span>, <span class="string">'稍蜷'</span>, <span class="string">'浊响'</span>, <span class="string">'稍糊'</span>, <span class="string">'是'</span>],</span><br><span class="line">            [<span class="string">'乌黑'</span>, <span class="string">'稍蜷'</span>, <span class="string">'浊响'</span>, <span class="string">'清晰'</span>, <span class="string">'是'</span>],</span><br><span class="line">            [<span class="string">'乌黑'</span>, <span class="string">'稍蜷'</span>, <span class="string">'沉闷'</span>, <span class="string">'稍糊'</span>, <span class="string">'否'</span>],</span><br><span class="line">            [<span class="string">'青绿'</span>, <span class="string">'硬挺'</span>, <span class="string">'清脆'</span>, <span class="string">'清晰'</span>, <span class="string">'否'</span>],</span><br><span class="line">            [<span class="string">'浅白'</span>, <span class="string">'硬挺'</span>, <span class="string">'清脆'</span>, <span class="string">'模糊'</span>, <span class="string">'否'</span>],</span><br><span class="line">            [<span class="string">'浅白'</span>, <span class="string">'蜷缩'</span>, <span class="string">'浊响'</span>, <span class="string">'模糊'</span>, <span class="string">'否'</span>],</span><br><span class="line">            [<span class="string">'浅白'</span>, <span class="string">'稍蜷'</span>, <span class="string">'浊响'</span>, <span class="string">'稍糊'</span>, <span class="string">'否'</span>],</span><br><span class="line">            [<span class="string">'浅白'</span>, <span class="string">'稍蜷'</span>, <span class="string">'沉闷'</span>, <span class="string">'稍糊'</span>, <span class="string">'否'</span>],</span><br><span class="line">            [<span class="string">'乌黑'</span>, <span class="string">'稍蜷'</span>, <span class="string">'沉闷'</span>, <span class="string">'稍糊'</span>, <span class="string">'否'</span>],</span><br><span class="line">            [<span class="string">'浅白'</span>, <span class="string">'蜷缩'</span>, <span class="string">'浊响'</span>, <span class="string">'模糊'</span>, <span class="string">'否'</span>],</span><br><span class="line">            [<span class="string">'青绿'</span>, <span class="string">'蜷缩'</span>, <span class="string">'沉闷'</span>, <span class="string">'稍糊'</span>, <span class="string">'否'</span>]]</span><br><span class="line">dic = dict()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 向量化处理</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">to_feature</span><span class="params">(features)</span>:</span></span><br><span class="line">    x, y = list(), list()</span><br><span class="line">    <span class="keyword">for</span> datas <span class="keyword">in</span> features:</span><br><span class="line">        x_temp = list()</span><br><span class="line">        <span class="comment"># 提取x特征</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(datas) - <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> type(datas[i]).__name__ == <span class="string">'str'</span>:</span><br><span class="line">                <span class="keyword">if</span> datas[i] <span class="keyword">not</span> <span class="keyword">in</span> dic.get(i, list()):</span><br><span class="line">                    <span class="keyword">if</span> dic.get(i) <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                        dic[i] = list()</span><br><span class="line">                    dic[i].append(datas[i])</span><br><span class="line">                x_temp.append(dic[i].index(datas[i]))</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                x_temp.append(datas[i])</span><br><span class="line">        x.append(x_temp)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 提取y特征</span></span><br><span class="line">        <span class="keyword">if</span> type(datas[<span class="number">-1</span>]).__name__ == <span class="string">'str'</span>:</span><br><span class="line">            length = len(datas) - <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> datas[<span class="number">-1</span>] <span class="keyword">not</span> <span class="keyword">in</span> dic.get(length, list()):</span><br><span class="line">                <span class="keyword">if</span> dic.get(length) <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                    dic[length] = list()</span><br><span class="line">                dic.get(length, list()).append(datas[<span class="number">-1</span>])</span><br><span class="line">            y.append(dic[length].index(datas[<span class="number">-1</span>]))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            y.append(datas[<span class="number">-1</span>])</span><br><span class="line">    <span class="keyword">return</span> x, y</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取对应分类</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_classifer</span><span class="params">(index)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> dic[len(watermelon[<span class="number">0</span>]) - <span class="number">1</span>][int(index[<span class="number">0</span>])]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    model = MLPClassifier(solver=<span class="string">'sgd'</span>, random_state = <span class="number">1</span>, verbose = <span class="literal">True</span>, max_iter=<span class="number">10</span>)</span><br><span class="line">    features, tags = to_feature(watermelon)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        model.fit(features, tags)  <span class="comment"># 模型训练</span></span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        print(e)</span><br><span class="line">	</span><br><span class="line">    <span class="comment">#单例测试模型</span></span><br><span class="line">    testcs = [[<span class="string">'青绿'</span>, <span class="string">'蜷缩'</span>, <span class="string">'浊响'</span>, <span class="string">'清晰'</span>, <span class="string">''</span>]]</span><br><span class="line">    print(<span class="string">"单例测试为："</span>, testcs[<span class="number">0</span>])</span><br><span class="line">    fx, ty = to_feature(testcs)</span><br><span class="line">    print(<span class="string">'是否是好瓜：'</span>, get_classifer(model.predict(fx))[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+
+<p>运行结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Iteration 1, loss &#x3D; 0.73868350</span><br><span class="line">Iteration 2, loss &#x3D; 0.73771503</span><br><span class="line">Iteration 3, loss &#x3D; 0.73634169</span><br><span class="line">Iteration 4, loss &#x3D; 0.73460667</span><br><span class="line">Iteration 5, loss &#x3D; 0.73256041</span><br><span class="line">Iteration 6, loss &#x3D; 0.73025021</span><br><span class="line">Iteration 7, loss &#x3D; 0.72771426</span><br><span class="line">Iteration 8, loss &#x3D; 0.72498608</span><br><span class="line">Iteration 9, loss &#x3D; 0.72209739</span><br><span class="line">Iteration 10, loss &#x3D; 0.71907449</span><br><span class="line">单例测试为： [&#39;青绿&#39;, &#39;蜷缩&#39;, &#39;浊响&#39;, &#39;清晰&#39;, &#39;&#39;]</span><br><span class="line">是否是好瓜： 是</span><br></pre></td></tr></table></figure>
+
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>神经网络主要优点是它们能够处理复杂的非线性函数，并且能发现不同的输入间的依赖关系。</p>
+<p>神经网络也允许增量式训练，并且通常不需要大量空间来保存训练模型，因为它们需要保存的仅仅是一组代表突触权重的数字而已。同时，也不需要保留训练后的原始数据。</p>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>神经网络主要缺点在于它是一种墨盒算法，使得很难准确知道网络何以得出最终答案。</p>
+<p>神经网络的另一个缺点是，在选择训练数据的比率与问题相适应的网络规模方面，没有明确的规则可以遵循，最终的决定往往需要大量的试验。</p>
+
+
+                            <!-- Meta -->
+                            <div class="post-meta">
+                                <hr>
+                                <br>
+                                <div class="post-tags">
+                                    
+                                        
+
+<a href="/tags/算法/">#算法</a>
+
+
+                                            
+                                </div>
+                                <div class="post-date">
+                                    2020年06月28日
+                                </div>
+                            </div>
+                    </div>
+
+                    <!-- Comments -->
+                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <!-- Disqus Comments -->
+
+
+                    </div>
+                </div>
+            </div>
+        </article>
+</section>
+
+<!-- Image viewer-->
+
+    <!-- Custom picture view-->
+    <link href="/css/viewer.min.css" rel="stylesheet" />
+    <script
+      src="/js/viewer.min.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    
+    <script type="text/javascript">
+      // set image viewer
+      Viewer.setDefaults({
+        zoomRatio: [0.5],
+        navbar: false,
+        toolbar: false,
+        button: false,
+        title: [2, (image, imageData) => `${image.alt}`],
+        show: function() {
+          this.viewer.zoomTo(0.5);
+        }
+      });
+      var imageList = document.getElementsByTagName("img");
+      Array.prototype.forEach.call(imageList, element => {
+        var viewer = new Viewer(element);
+      });
+    </script>
+
+    
+    <!-- Scripts -->
+    <script type="text/javascript">
+    console.log("© zchen9 🙋 2015-" + new Date().getFullYear());
+</script>
+  
+    <!-- Google Analytics -->
+    
+
+    <!-- Service Worker -->
+    <!-- if using service worker -->
+
+    
+</body>
+
+</html>
